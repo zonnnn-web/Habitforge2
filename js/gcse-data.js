@@ -4,7 +4,7 @@
 // Full spec content + correct getDailyRecommendation() for app.js.
 // ============================================================
 
-const GCSE_SUBJECTS = {
+var GCSE_SUBJECTS = {
 
   // ── MATHS (Edexcel) ───────────────────────────────────────
   maths: {
@@ -61,7 +61,7 @@ const GCSE_SUBJECTS = {
         "Circle theorems (all 8)",
         "Area and perimeter — all 2D shapes",
         "Volume and surface area — prisms, cylinders, spheres, cones, pyramids",
-        "Pythagoras' theorem",
+        "Pythagoras theorem",
         "Trigonometry — SOH CAH TOA, exact values",
         "Sine rule & cosine rule",
         "Vectors",
@@ -108,10 +108,10 @@ const GCSE_SUBJECTS = {
         "Quadratic inequalities",
         "Simultaneous equations — one quadratic",
         "nth roots and fractional/negative indices",
-        "Arithmetic & geometric series — Σ notation",
+        "Arithmetic & geometric series — notation",
       ]},
       { id: "fm2", topic: "Coordinate Geometry", points: [
-        "Equation of a circle: (x−a)²+(y−b)²=r²",
+        "Equation of a circle: (x-a)^2+(y-b)^2=r^2",
         "Intersection of a line and circle",
         "Tangent to a circle from a point",
         "Distance between two points in 3D",
@@ -126,18 +126,18 @@ const GCSE_SUBJECTS = {
       ]},
       { id: "fm4", topic: "Matrix Algebra", points: [
         "Matrix addition, subtraction, multiplication",
-        "2×2 determinant and inverse",
+        "2x2 determinant and inverse",
         "Matrix transformations — rotation, reflection, enlargement, shear",
         "Combining transformations using matrices",
-        "Solving 2×2 simultaneous equations using matrices",
+        "Solving 2x2 simultaneous equations using matrices",
       ]},
       { id: "fm5", topic: "Trigonometry", points: [
-        "Exact values: sin/cos/tan of 30°, 45°, 60°",
+        "Exact values: sin/cos/tan of 30, 45, 60 degrees",
         "Sine rule proof",
         "Cosine rule proof",
-        "Area of a triangle = ½ab sinC",
+        "Area of a triangle = 0.5 ab sinC",
         "Solving trig equations in a given interval",
-        "Trig identities: sin²θ+cos²θ=1, tanθ=sinθ/cosθ",
+        "Trig identities: sin^2+cos^2=1, tan=sin/cos",
       ]},
       { id: "fm6", topic: "Functions & Graphs", points: [
         "Domain and range",
@@ -194,7 +194,7 @@ const GCSE_SUBJECTS = {
         "Malaria, HIV, measles, salmonella, rose black spot",
       ]},
       { id: "bio4", topic: "Bioenergetics", points: [
-        "Photosynthesis equation: 6CO₂+6H₂O→C₆H₁₂O₆+6O₂",
+        "Photosynthesis equation: 6CO2+6H2O to C6H12O6+6O2",
         "Rate of photosynthesis — limiting factors",
         "Required practical — effect of light on photosynthesis",
         "Uses of glucose in plants",
@@ -304,8 +304,8 @@ const GCSE_SUBJECTS = {
       ]},
       { id: "ch5", topic: "Energy Changes", points: [
         "Exothermic and endothermic reactions",
-        "Bond energies — calculating ΔH",
-        "H = mcΔT calorimetry",
+        "Bond energies — calculating delta H",
+        "H = mcDeltaT calorimetry",
         "Reaction profiles — activation energy",
         "Cells and batteries",
         "Fuel cells — hydrogen",
@@ -333,7 +333,7 @@ const GCSE_SUBJECTS = {
       { id: "ch8", topic: "Chemical Analysis", points: [
         "Pure substances and formulations",
         "Chromatography — Rf values",
-        "Tests for gases: H₂, O₂, CO₂, Cl₂",
+        "Tests for gases: H2, O2, CO2, Cl2",
         "Flame tests — identifying metal ions",
         "NaOH test — identifying metal hydroxides",
         "Tests for halide and sulfate ions",
@@ -374,12 +374,12 @@ const GCSE_SUBJECTS = {
     topics: [
       { id: "ph1", topic: "Energy", points: [
         "Energy stores and transfers",
-        "Kinetic energy: Ek = ½mv²",
+        "Kinetic energy: Ek = 0.5mv^2",
         "Gravitational potential energy: Ep = mgh",
-        "Elastic potential energy: Ee = ½ke²",
+        "Elastic potential energy: Ee = 0.5ke^2",
         "Conservation of energy",
         "Power: P = E/t = Fv",
-        "Efficiency = useful output/total input",
+        "Efficiency = useful output / total input",
         "National grid and energy transfer",
         "Reducing unwanted energy transfers",
         "Renewable and non-renewable energy sources",
@@ -389,7 +389,7 @@ const GCSE_SUBJECTS = {
         "V = IR (Ohm's Law)",
         "Series and parallel circuits",
         "Resistors — I-V characteristics",
-        "Power: P = IV = I²R = V²/R",
+        "Power: P = IV = I^2 R = V^2/R",
         "Energy: E = QV = Pt",
         "Mains electricity — AC vs DC",
         "Domestic appliances and wiring",
@@ -397,10 +397,10 @@ const GCSE_SUBJECTS = {
         "Static electricity",
       ]},
       { id: "ph3", topic: "Particle Model", points: [
-        "Density: ρ = m/V",
+        "Density: rho = m/V",
         "States of matter — particle arrangements",
         "Internal energy — heating",
-        "Specific heat capacity: Q = mcΔT",
+        "Specific heat capacity: Q = mcDeltaT",
         "Specific latent heat: Q = mL",
         "Pressure in gases — pV = constant (Boyle's Law)",
         "Temperature and pressure — absolute zero",
@@ -432,10 +432,10 @@ const GCSE_SUBJECTS = {
       ]},
       { id: "ph6", topic: "Waves", points: [
         "Transverse vs longitudinal waves",
-        "Wave equation: v = fλ",
+        "Wave equation: v = f x lambda",
         "Reflection, refraction, absorption",
         "Electromagnetic spectrum — all 7 types",
-        "Radio, microwave, IR, visible, UV, X-ray, gamma — uses & hazards",
+        "Radio, microwave, IR, visible, UV, X-ray, gamma — uses and hazards",
         "Sound waves — compression, rarefaction",
         "Ultrasound — medical uses",
         "Seismic waves — P and S waves",
@@ -504,6 +504,4 @@ const GCSE_SUBJECTS = {
         "Routers, switches, WAPs, NICs",
         "The internet — WWW, hosting, DNS",
         "Network security threats — malware types",
-        "Mitigation — firewalls, encryption, two-factor auth",
-      ]},
-      {
+        "Mitigation — firewalls, encry
