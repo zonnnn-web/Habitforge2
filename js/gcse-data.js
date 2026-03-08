@@ -1,6 +1,5 @@
 // ============================================================
-// GCSE SPEC DATA — RAM'S EXAM COMMAND CENTER (FINAL 2026)
-// Dates cross-referenced with AQA, Edexcel, and OCR 2026 Timetables.
+// GCSE SPEC DATA — RAM'S EXAM COMMAND CENTER (FIXED & UPDATED)
 // ============================================================
 
 const GCSE_SUBJECTS = {
@@ -30,8 +29,8 @@ const GCSE_SUBJECTS = {
     color: "#ec4899",
     icon: "📖",
     exams: [
-      { paper: "Paper 1 (Shakespeare/Drama)", date: "2026-05-11", time: "AM" },
-      { paper: "Paper 2 (Novel/Poetry)",     date: "2026-05-19", time: "AM" },
+      { paper: "Paper 1 — Shakespeare + Post-1914 Drama", date: "2026-05-11", time: "AM" },
+      { paper: "Paper 2 — Poetry + 19th Century Prose",   date: "2026-05-19", time: "AM" },
     ],
     topics: [
       { id: "lit4", topic: "Conflict Poetry (Edexcel Cluster)", points: [
@@ -61,7 +60,7 @@ const GCSE_SUBJECTS = {
     color: "#f43f5e",
     icon: "✍",
     exams: [
-      { paper: "Paper 1 (Fiction)",     date: "2026-05-21", time: "AM" },
+      { paper: "Paper 1 (Fiction)", date: "2026-05-21", time: "AM" },
       { paper: "Paper 2 (Non-Fiction)", date: "2026-06-05", time: "AM" },
     ],
   },
@@ -109,7 +108,7 @@ const GCSE_SUBJECTS = {
     color: "#06b6d4",
     icon: "💻",
     exams: [
-      { paper: "Paper 1 (Systems)",  date: "2026-05-13", time: "PM" },
+      { paper: "Paper 1 (Systems)", date: "2026-05-13", time: "PM" },
       { paper: "Paper 2 (Thinking)", date: "2026-05-19", time: "PM" },
     ],
   },
@@ -126,18 +125,6 @@ const GCSE_SUBJECTS = {
       { paper: "Paper 3 (Germany)",    date: "2026-06-11", time: "AM" },
     ],
   },
-  
-  // ── GERMAN (AQA) ──────────────────────────────────────────
-  german: {
-    name: "German",
-    board: "AQA",
-    color: "#f97316",
-    icon: "🇩🇪",
-    exams: [
-      { paper: "Listening & Reading", date: "2026-05-07", time: "PM" },
-      { paper: "Writing",             date: "2026-05-14", time: "PM" },
-    ],
-  },
 
   // ── FURTHER MATHS (AQA L2) ────────────────────────────────
   furtherMaths: {
@@ -146,13 +133,25 @@ const GCSE_SUBJECTS = {
     color: "#8b5cf6",
     icon: "∑",
     exams: [
-      { paper: "Paper 1", date: "2026-06-08", time: "PM" },
-      { paper: "Paper 2", date: "2026-06-15", time: "PM" },
+      { paper: "Paper 1 (Non-Calc)", date: "2026-06-08", time: "PM" },
+      { paper: "Paper 2 (Calc)",     date: "2026-06-15", time: "PM" },
     ],
   },
+
+  // ── GERMAN (AQA) ──────────────────────────────────────────
+  german: {
+    name: "German",
+    board: "AQA",
+    color: "#f97316",
+    icon: "🇩🇪",
+    exams: [
+      { paper: "Reading/Listening", date: "2026-05-07", time: "PM" },
+      { paper: "Writing",           date: "2026-05-14", time: "PM" },
+    ],
+  }
 };
 
-// ── DATA PROCESSING LOGIC (Ensures Code Parsability) ────────
+// ── FLAT LIST FOR CALENDAR ───────────────────
 const ALL_EXAM_DATES = [];
 Object.entries(GCSE_SUBJECTS).forEach(([key, subj]) => {
   subj.exams.forEach(exam => {
@@ -161,25 +160,30 @@ Object.entries(GCSE_SUBJECTS).forEach(([key, subj]) => {
       subject: subj.name,
       subjectKey: key,
       color: subj.color,
-      icon: subj.icon
+      icon: subj.icon,
     });
   });
 });
 ALL_EXAM_DATES.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-// ── PHASES AND UTILITIES ────────────────────────────────────
+// ── STUDY PHASES ─────────────────────────────
 const STUDY_PHASES = [
-  { name: "PHASE 1", range: ["2026-03-01", "2026-04-05"], focus: "Knowledge Gaps" },
-  { name: "PHASE 2", range: ["2026-04-06", "2026-05-06"], focus: "Active Recall" },
-  { name: "PHASE 3", range: ["2026-05-07", "2026-06-20"], focus: "Exam Performance" },
+  { name: "PHASE 1", range: ["2026-03-09", "2026-04-03"], focus: "Deep Foundation" },
+  { name: "PHASE 2", range: ["2026-04-04", "2026-04-24"], focus: "Consolidation" },
+  { name: "PHASE 3", range: ["2026-04-25", "2026-05-12"], focus: "Exam Simulation" },
+  { name: "PHASE 4", range: ["2026-05-13", "2026-06-15"], focus: "Exam Period" },
 ];
 
+// ── RECOMMENDATION ENGINE ────────────────────
 function getDailyRecommendation() {
-  const today = new Date().toISOString().split('T')[0];
-  const upcoming = ALL_EXAM_DATES.filter(e => e.date >= today);
-  return {
-    phase: STUDY_PHASES.find(p => today >= p.range[0] && today <= p.range[1]) || STUDY_PHASES[2],
-    nextExam: upcoming[0] || null,
-    countdown: upcoming[0] ? Math.ceil((new Date(upcoming[0].date) - new Date(today)) / 86400000) : 0
-  };
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+
+  const phase = STUDY_PHASES.find(p => todayStr >= p.range[0] && todayStr <= p.range[1])
+    || STUDY_PHASES[STUDY_PHASES.length - 1];
+
+  const upcoming = ALL_EXAM_DATES.filter(e => e.date >= todayStr);
+  const next = upcoming[0] || null;
+
+  return { phase, upcoming: upcoming.slice(0, 5), next };
 }
