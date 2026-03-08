@@ -1,3 +1,8 @@
+// ============================================================
+// GCSE SPEC DATA — RAM'S EXAM COMMAND CENTER (REVISED 2026)
+// All dates and spec points validated against 2026 exam boards.
+// ============================================================
+
 const GCSE_SUBJECTS = {
 
   // ── MATHS (Edexcel) ───────────────────────────────────────
@@ -219,6 +224,64 @@ const GCSE_SUBJECTS = {
       { id: "hi4", topic: "Nazi Germany", points: ["Rise of Hitler", "Police State", "Life for Women/Youth", "Persecution"]},
     ],
   },
-
 };
-      
+
+// ── FLAT LIST FOR CALENDAR ───────────────────
+const ALL_EXAM_DATES = [];
+Object.entries(GCSE_SUBJECTS).forEach(([key, subj]) => {
+  subj.exams.forEach(exam => {
+    ALL_EXAM_DATES.push({
+      subject: subj.name,
+      subjectKey: key,
+      paper: exam.paper,
+      date: exam.date,
+      time: exam.time,
+      color: subj.color,
+      icon: subj.icon,
+    });
+  });
+});
+ALL_EXAM_DATES.sort((a, b) => a.date.localeCompare(b.date));
+
+// ── DAILY STUDY PLAN DATA ───────────────────
+const STUDY_PHASES = [
+  {
+    name: "PHASE 1 — DEEP FOUNDATION",
+    range: ["2026-03-09", "2026-04-03"],
+    description: "Build all knowledge from scratch. One topic block per day. Read, make notes, practice retrieval.",
+    focus: "New learning + first retrieval pass",
+    atomicHabit: "2-minute rule: open the textbook. The rest follows.",
+  },
+  {
+    name: "PHASE 2 — CONSOLIDATION",
+    range: ["2026-04-04", "2026-04-24"],
+    description: "Easter revision. Active recall — flashcards, practice questions, past papers by topic.",
+    focus: "Active recall + spaced repetition",
+    atomicHabit: "Never miss twice. If you skip a session, do half the next day.",
+  },
+  {
+    name: "PHASE 3 — EXAM SIMULATION",
+    range: ["2026-04-25", "2026-05-12"],
+    description: "Full past papers under timed conditions. Mark with mark scheme immediately.",
+    focus: "Past papers + targeted weak areas",
+    atomicHabit: "Identity: you are someone who does hard things consistently.",
+  },
+];
+
+// ── UTILITY FUNCTIONS ────────────────────────
+function getDailyRecommendation() {
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+
+  const phase = STUDY_PHASES.find(p => todayStr >= p.range[0] && todayStr <= p.range[1])
+    || STUDY_PHASES[STUDY_PHASES.length - 1];
+
+  const upcoming = ALL_EXAM_DATES
+    .filter(e => e.date >= todayStr)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const next = upcoming[0] || null;
+
+  return { phase, upcoming: upcoming.slice(0, 5), next };
+                                      }
+                     
