@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HabitForge GCSE — Ram's Exam Command</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-wrap">
+        <div class="logo-hex">⬡</div>
+        <div class="logo-words">
+          <span class="logo-main">HABITFORGE</span>
+          <span class="logo-sub">GCSE COMMAND</span>
+        </div>
+      </div>
+      <button class="sidebar-close" id="sidebar-close">✕</button>
+    </div>
+
+    <div class="sidebar-user">
+      <span class="user-tag">CANDIDATE</span>
+      <span class="user-name">RAM</span>
+      <span class="user-year">2026 EXAMS</span>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-box" id="countdown-box">
+      <div class="cdb-inner">
+        <div class="cdb-days" id="cd-days">—</div>
+        <div class="cdb-label" id="cd-label">days to first exam</div>
+      </div>
+    </div>
+
+    <ul class="nav-list">
+      <li><button class="nav-btn active" data-view="dashboard">
+        <span class="nav-icon">◈</span><span>Dashboard</span>
+      </button></li>
+      <li><button class="nav-btn" data-view="specs">
+        <span class="nav-icon">◉</span><span>GCSE Specs</span>
+      </button></li>
+      <li><button class="nav-btn" data-view="pomodoro">
+        <span class="nav-icon">◷</span><span>Deep Work</span>
+      </button></li>
+      <li><button class="nav-btn" data-view="calendar">
+        <span class="nav-icon">◫</span><span>Exam Calendar</span>
+      </button></li>
+      <li><button class="nav-btn" data-view="todos">
+        <span class="nav-icon">◻</span><span>Tasks</span>
+      </button></li>
+      <li><button class="nav-btn" data-view="habits">
+        <span class="nav-icon">◑</span><span>Daily Habits</span>
+      </button></li>
+    </ul>
+
+    <div class="sidebar-xp">
+      <div class="xp-row">
+        <span class="xp-label">XP</span>
+        <span class="xp-num" id="sb-xp">0</span>
+        <div class="xp-badge" id="sb-level">LVL 1</div>
+      </div>
+      <div class="xp-bar"><div class="xp-fill" id="sb-xp-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="sidebar-quote" id="sb-quote">
+      <p class="sq-text">"You do not rise to the level of your goals. You fall to the level of your systems."</p>
+      <p class="sq-auth">— James Clear</p>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main" id="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="tb-left">
+        <button class="hamburger" id="hamburger">☰</button>
+        <div class="tb-date" id="tb-date"></div>
+      </div>
+      <div class="tb-right">
+        <div class="tb-streak" id="tb-streak">
+          <span class="ts-num" id="streak-num">0</span>
+          <span class="ts-label">DAY STREAK 🔥</span>
+        </div>
+        <div class="tb-score" id="tb-score">
+          <span class="score-val" id="score-val">0%</span>
+          <span class="score-label">today</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- VIEWS -->
+    <div class="views">
+
+      <!-- ═══ DASHBOARD ═══ -->
+      <section class="view active" id="view-dashboard">
+        <div class="vh">
+          <div class="vh-title-wrap">
+            <h1 class="vh-title">COMMAND CENTER</h1>
+            <div class="vh-phase-tag" id="dash-phase-tag">PHASE 1</div>
+          </div>
+          <p class="vh-sub" id="dash-phase-desc">Loading study phase...</p>
+        </div>
+
+        <!-- Alert: next exam -->
+        <div class="exam-alert" id="exam-alert"></div>
+
+        <div class="dash-grid">
+          <!-- Today's plan -->
+          <div class="card span-7" id="card-today-plan">
+            <div class="card-lbl">TODAY'S DEEP WORK PLAN</div>
+            <div id="today-plan-list"></div>
+            <div class="atomic-banner" id="atomic-banner"></div>
+          </div>
+
+          <!-- Score ring -->
+          <div class="card span-5 ring-card">
+            <div class="card-lbl">SPEC MASTERY</div>
+            <div class="ring-wrap">
+              <svg viewBox="0 0 120 120" class="ring-svg">
+                <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                <circle class="ring-fg" id="mastery-ring" cx="60" cy="60" r="50"
+                  stroke-dasharray="314" stroke-dashoffset="314"/>
+              </svg>
+              <div class="ring-inner">
+                <span class="ring-pct" id="mastery-pct">0%</span>
+                <span class="ring-lbl">mastered</span>
+              </div>
+            </div>
+            <div class="ring-stats">
+              <div class="rs"><span id="rs-done">0</span><span>done</span></div>
+              <div class="rs"><span id="rs-total">0</span><span>total</span></div>
+            </div>
+          </div>
+
+          <!-- Upcoming exams -->
+          <div class="card span-7" id="card-upcoming">
+            <div class="card-lbl">UPCOMING EXAMS</div>
+            <div id="upcoming-exams-list"></div>
+          </div>
+
+          <!-- Pomodoro quick -->
+          <div class="card span-5 pomo-quick-card">
+            <div class="card-lbl">DEEP WORK TIMER</div>
+            <div class="pq-time" id="pq-time">25:00</div>
+            <div class="pq-state" id="pq-state">Ready to focus</div>
+            <button class="btn-primary" id="pq-btn">▶ START SESSION</button>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="card span-4 stat-card">
+            <span class="stat-n" id="st-habits">0</span>
+            <span class="stat-l">Habits Done</span>
+          </div>
+          <div class="card span-4 stat-card">
+            <span class="stat-n" id="st-pomo">0</span>
+            <span class="stat-l">Pomodoros</span>
+          </div>
+          <div class="card span-4 stat-card">
+            <span class="stat-n" id="st-spec">0</span>
+            <span class="stat-l">Spec Points</span>
+          </div>
+
+          <!-- Subject progress -->
+          <div class="card span-12" id="card-subject-progress">
+            <div class="card-lbl">SUBJECT MASTERY OVERVIEW</div>
+            <div class="subj-bars" id="subj-bars"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ GCSE SPECS ═══ -->
+      <section class="view" id="view-specs">
+        <div class="vh">
+          <h1 class="vh-title">GCSE SPECS</h1>
+          <p class="vh-sub">Tick each spec point as you master it. Every tick = +2 XP.</p>
+        </div>
+
+        <!-- Subject selector -->
+        <div class="spec-subject-tabs" id="spec-subject-tabs"></div>
+
+        <!-- Spec content -->
+        <div class="spec-body" id="spec-body"></div>
+      </section>
+
+      <!-- ═══ POMODORO / DEEP WORK ═══ -->
+      <section class="view" id="view-pomodoro">
+        <div class="vh">
+          <h1 class="vh-title">DEEP WORK</h1>
+          <p class="vh-sub">Cal Newport: "Do fewer things. Do them without distraction. Do them well."</p>
+        </div>
+        <div class="pomo-layout">
+          <div class="pomo-main">
+            <div class="pomo-tabs">
+              <button class="pt active" data-mode="work">FOCUS</button>
+              <button class="pt" data-mode="short">SHORT BREAK</button>
+              <button class="pt" data-mode="long">LONG BREAK</button>
+            </div>
+            <div class="pomo-ring-wrap">
+              <svg class="pomo-svg" viewBox="0 0 300 300">
+                <circle class="pt-track" cx="150" cy="150" r="130"/>
+                <circle class="pt-prog" id="pt-prog" cx="150" cy="150" r="130"
+                  stroke-dasharray="816.8" stroke-dashoffset="0"/>
+              </svg>
+              <div class="pomo-inner">
+                <div class="pt-time" id="pt-time">25:00</div>
+                <div class="pt-mode" id="pt-mode">FOCUS SESSION</div>
+                <div class="pt-count">Session <span id="pt-count">1</span> of 4</div>
+              </div>
+            </div>
+            <div class="pomo-ctrl">
+              <button class="pc-sec" id="pc-reset">↺</button>
+              <button class="pc-main" id="pc-start">▶</button>
+              <button class="pc-sec" id="pc-skip">⇥</button>
+            </div>
+            <div class="pomo-focus-input">
+              <label class="card-lbl">WORKING ON (GCSE SUBJECT)</label>
+              <select class="field-sel" id="pomo-subject-select">
+                <option value="">— Select subject —</option>
+              </select>
+              <input class="field-in" id="pomo-task-in" placeholder="Specific topic or question set..."/>
+            </div>
+          </div>
+
+          <div class="pomo-side">
+            <div class="card">
+              <div class="card-lbl">DEEP WORK PROTOCOL</div>
+              <ul class="protocol-list">
+                <li><span class="pi">01</span>Phone in drawer. Full stop.</li>
+                <li><span class="pi">02</span>One subject. One task. Nothing else.</li>
+                <li><span class="pi">03</span>90 minutes max per block.</li>
+                <li><span class="pi">04</span>Write stray thoughts — don't chase them.</li>
+                <li><span class="pi">05</span>Full break. No half-rest.</li>
+                <li><span class="pi">06</span>Schedule deep work. Never wait for motivation.</li>
+                <li><span class="pi">07</span>End ritual: what did I learn? 2 sentences.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-lbl">TODAY'S FOCUS LOG</div>
+              <div id="pomo-log"></div>
+            </div>
+            <div class="card">
+              <div class="card-lbl">SESSION SETTINGS</div>
+              <div class="pomo-settings">
+                <div class="ps-row"><label>Focus (min)</label><input type="number" class="si" id="si-work" value="25" min="1" max="90"/></div>
+                <div class="ps-row"><label>Short break</label><input type="number" class="si" id="si-short" value="5" min="1" max="30"/></div>
+                <div class="ps-row"><label>Long break</label><input type="number" class="si" id="si-long" value="15" min="1" max="60"/></div>
+                <button class="btn-ghost" id="si-save">Apply</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-lbl">DEEP WORK TOTALS</div>
+              <div class="dw-totals">
+                <div class="dwt"><span id="dwt-min">0</span><span>mins today</span></div>
+                <div class="dwt"><span id="dwt-sess">0</span><span>sessions done</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CALENDAR ═══ -->
+      <section class="view" id="view-calendar">
+        <div class="vh">
+          <h1 class="vh-title">EXAM CALENDAR</h1>
+          <p class="vh-sub">Every exam date pre-loaded. Schedule your priorities, don't prioritise your schedule.</p>
+        </div>
+        <div class="cal-layout">
+          <div class="cal-main">
+            <div class="cal-nav-row">
+              <button class="cal-nav" id="cal-prev">‹</button>
+              <h2 class="cal-month" id="cal-month">MARCH 2026</h2>
+              <button class="cal-nav" id="cal-next">›</button>
+            </div>
+            <div class="cal-weekdays">
+              <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+
+            <!-- Legend -->
+            <div class="cal-legend">
+              <div class="cl-item"><div class="cl-dot" style="background:#ef4444"></div>Exam</div>
+              <div class="cl-item"><div class="cl-dot" style="background:#6366f1"></div>Event</div>
+              <div class="cl-item"><div class="cl-dot" style="background:#22c55e"></div>Habits done</div>
+            </div>
+          </div>
+          <div class="cal-side">
+            <div class="card">
+              <div class="card-lbl" id="cal-sel-label">SELECT A DATE</div>
+              <div id="cal-sel-content">
+                <p class="empty-s">Click any date to view or add events.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-lbl">EXAM SCHEDULE</div>
+              <div class="exam-schedule-list" id="exam-schedule-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ TODOS ═══ -->
+      <section class="view" id="view-todos">
+        <div class="vh">
+          <h1 class="vh-title">TASK FORGE</h1>
+          <p class="vh-sub">Most Important Task first. Every single day.</p>
+        </div>
+        <div class="todo-layout">
+          <div class="todo-main">
+            <div class="todo-add">
+              <input class="field-in flex1" id="todo-in" placeholder="Add a task..."/>
+              <select class="field-sel" id="todo-pri">
+                <option value="critical">🔴 Critical</option>
+                <option value="high">🟠 High</option>
+                <option value="medium" selected>🟡 Medium</option>
+                <option value="low">🟢 Low</option>
+              </select>
+              <select class="field-sel" id="todo-cat">
+                <option value="maths">📐 Maths</option>
+                <option value="physics">⚛ Physics</option>
+                <option value="chemistry">🧪 Chemistry</option>
+                <option value="biology">🧬 Biology</option>
+                <option value="computerScience">💻 CS</option>
+                <option value="englishLang">✍ Eng Lang</option>
+                <option value="englishLit">📖 Eng Lit</option>
+                <option value="german">🇩🇪 German</option>
+                <option value="history">🏛 History</option>
+                <option value="furtherMaths">∑ Further Maths</option>
+                <option value="general">📋 General</option>
+              </select>
+              <button class="btn-primary" id="todo-add">ADD</button>
+            </div>
+            <div class="todo-filters">
+              <button class="fb active" data-tf="all">ALL</button>
+              <button class="fb" data-tf="active">ACTIVE</button>
+              <button class="fb" data-tf="done">DONE</button>
+              <button class="fb" data-tf="critical">🔴 CRITICAL</button>
+            </div>
+            <div class="mit-strip">
+              <span class="mit-badge">MIT</span>
+              <span class="mit-text">Most Important Task — nail this before anything else.</span>
+            </div>
+            <div id="todos-list"></div>
+          </div>
+          <div class="todo-side">
+            <div class="card">
+              <div class="card-lbl">TASK STATS</div>
+              <div class="ts-grid">
+                <div class="dwt"><span id="tst-total">0</span><span>total</span></div>
+                <div class="dwt"><span id="tst-done">0</span><span>done</span></div>
+                <div class="dwt"><span id="tst-crit">0</span><span>critical</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-lbl">ATOMIC HABITS TIP</div>
+              <p class="atomic-tip-text" id="todo-atomic-tip"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ HABITS ═══ -->
+      <section class="view" id="view-habits">
+        <div class="vh">
+          <h1 class="vh-title">DAILY HABITS</h1>
+          <p class="vh-sub">Your identity is built by what you do every single day.</p>
+        </div>
+        <div class="habit-principles">
+          <div class="hp"><span>👁</span>Make it Obvious</div>
+          <div class="hp"><span>✨</span>Make it Attractive</div>
+          <div class="hp"><span>⚡</span>Make it Easy</div>
+          <div class="hp"><span>🎯</span>Make it Satisfying</div>
+        </div>
+        <div class="habits-ctrl">
+          <button class="btn-primary" id="add-habit-btn">+ NEW HABIT</button>
+          <div class="habit-filters">
+            <button class="fb active" data-hf="all">ALL</button>
+            <button class="fb" data-hf="morning">🌅 Morning</button>
+            <button class="fb" data-hf="afternoon">☀️ Afternoon</button>
+            <button class="fb" data-hf="evening">🌙 Evening</button>
+          </div>
+        </div>
+        <div id="habits-list"></div>
+
+        <!-- Modal -->
+        <div class="modal-ov" id="habit-modal">
+          <div class="modal">
+            <div class="modal-hd">
+              <h2 class="modal-title">FORGE NEW HABIT</h2>
+              <button class="modal-cls" id="modal-cls">✕</button>
+            </div>
+            <div class="modal-bd">
+              <div class="fg"><label class="card-lbl">HABIT NAME</label>
+                <input class="field-in" id="h-name" placeholder="e.g. Do 20 past paper questions"/></div>
+              <div class="fg"><label class="card-lbl">IDENTITY STATEMENT</label>
+                <input class="field-in" id="h-identity" placeholder="I am a student who revises every day"/></div>
+              <div class="fg"><label class="card-lbl">IMPLEMENTATION INTENTION</label>
+                <input class="field-in" id="h-intention" placeholder="I will [habit] at [time] in [place]"/></div>
+              <div class="fr">
+                <div class="fg"><label class="card-lbl">TIME</label>
+                  <select class="field-sel" id="h-time">
+                    <option value="morning">🌅 Morning</option>
+                    <option value="afternoon">☀️ Afternoon</option>
+                    <option value="evening">🌙 Evening</option>
+                    <option value="anytime">⚡ Anytime</option>
+                  </select></div>
+                <div class="fg"><label class="card-lbl">EMOJI</label>
+                  <input class="field-in" id="h-emoji" placeholder="📚" maxlength="2"/></div>
+              </div>
+              <div class="fg"><label class="card-lbl">HABIT STACK (after what habit?)</label>
+                <input class="field-in" id="h-cue" placeholder="After I eat breakfast..."/></div>
+            </div>
+            <div class="modal-ft">
+              <button class="btn-ghost" id="modal-cancel">Cancel</button>
+              <button class="btn-primary" id="modal-save">FORGE HABIT</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /views -->
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/gcse-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
