@@ -504,4 +504,476 @@ const GCSE_SUBJECTS = {
         "Routers, switches, WAPs, NICs",
         "The internet — WWW, hosting, DNS",
         "Network security threats — malware types",
-        "Mitigation — firewalls, enc
+        "Mitigation — firewalls, encryption, two-factor auth",
+      ]},
+      { id: "cs4", topic: "Network Security", points: [
+        "Social engineering — phishing, pharming, shouldering",
+        "Malware — virus, worm, trojan, ransomware, spyware, adware",
+        "SQL injection",
+        "Brute force attacks",
+        "Denial-of-service (DoS)",
+        "Firewalls — packet filtering",
+        "Encryption — symmetric vs asymmetric",
+        "Penetration testing",
+        "Cyber security roles",
+      ]},
+      { id: "cs5", topic: "Systems Software", points: [
+        "Operating system functions",
+        "Memory management",
+        "Multitasking — scheduling",
+        "Utility software — compression, defragmentation, antivirus, backup",
+        "Device drivers",
+        "Translators — compiler, interpreter, assembler",
+      ]},
+      { id: "cs6", topic: "Ethical & Legal", points: [
+        "Ethical issues of computing",
+        "Environmental impact",
+        "Privacy — cookies, GDPR",
+        "Copyright — patents, open source, Creative Commons",
+        "Computer Misuse Act 1990",
+        "Data Protection Act 2018",
+        "Freedom of Information Act",
+        "Stakeholder conflicts",
+      ]},
+      { id: "cs7", topic: "Algorithms", points: [
+        "Computational thinking — abstraction, decomposition, pattern recognition",
+        "Flowcharts and pseudocode",
+        "Linear search — algorithm and trace",
+        "Binary search — algorithm, trace, requirements",
+        "Bubble sort — algorithm, trace, best/worst case",
+        "Merge sort — algorithm, trace, efficiency",
+        "Insertion sort — algorithm and trace",
+        "Big-O notation — O(1), O(n), O(n^2), O(n log n)",
+        "Decomposition and subroutines",
+      ]},
+      { id: "cs8", topic: "Programming", points: [
+        "Variables, constants, data types",
+        "Sequence, selection (if/elif/else), iteration (for/while)",
+        "Arrays and lists",
+        "String manipulation — length, slice, concatenation, upper/lower",
+        "File handling — open, read, write, close",
+        "Subroutines — procedures vs functions, parameters, return values",
+        "Local vs global variables",
+        "SQL — SELECT, FROM, WHERE, AND, OR",
+        "SQL — INSERT, UPDATE",
+        "Random number generation",
+      ]},
+      { id: "cs9", topic: "Boolean Logic", points: [
+        "Logic gates — AND, OR, NOT, NAND, NOR, XOR",
+        "Truth tables — construct and interpret",
+        "Boolean expressions",
+        "De Morgan's laws",
+        "Simplifying Boolean algebra",
+        "Half adder circuit",
+      ]},
+    ],
+  },
+
+  // ── ENGLISH LANGUAGE (AQA) ────────────────────────────────
+  englishLang: {
+    name: "English Language",
+    board: "AQA",
+    color: "#f43f5e",
+    icon: "✍",
+    exams: [
+      { paper: "Paper 1 (Fiction)",     date: "2026-05-21", time: "AM" },
+      { paper: "Paper 2 (Non-Fiction)", date: "2026-06-05", time: "AM" },
+    ],
+    topics: [
+      { id: "el1", topic: "Reading Skills", points: [
+        "Identifying explicit and implicit information",
+        "Summarising and synthesising information",
+        "Analysing writers methods — structure",
+        "Analysing writers methods — language",
+        "Evaluating effectiveness — reader response",
+        "Comparing writers viewpoints",
+        "Understanding purpose, audience, form (PAF)",
+        "Identifying structural features — whole text level",
+      ]},
+      { id: "el2", topic: "Writing Skills", points: [
+        "Writing for impact — narrative/descriptive",
+        "Structural devices — cyclical, non-linear, shift in perspective",
+        "Sentence forms for effect — fragments, minor sentences",
+        "Paragraphing and discourse markers",
+        "Vocabulary choices — connotation and register",
+        "Rhetorical techniques — AFOREST",
+        "Writing to argue, persuade, advise",
+        "Audience-appropriate tone",
+        "Proof-reading — spelling, punctuation, grammar (SPaG)",
+      ]},
+      { id: "el3", topic: "Language Analysis Techniques", points: [
+        "Metaphor and simile",
+        "Personification",
+        "Pathetic fallacy",
+        "Alliteration and sibilance",
+        "Semantic field",
+        "Connotation",
+        "Tone and mood",
+        "Imagery",
+        "Repetition and listing",
+        "Hyperbole",
+      ]},
+    ],
+  },
+
+  // ── ENGLISH LITERATURE (Edexcel) ──────────────────────────
+  englishLit: {
+    name: "English Literature",
+    board: "Edexcel",
+    color: "#ec4899",
+    icon: "📖",
+    exams: [
+      { paper: "Paper 1 (Shakespeare/Drama)", date: "2026-05-11", time: "AM" },
+      { paper: "Paper 2 (Novel/Poetry)",      date: "2026-05-19", time: "AM" },
+    ],
+    topics: [
+      { id: "lit1", topic: "Romeo and Juliet (Shakespeare)", points: [
+        "Plot — all 5 acts: prologue, meeting, balcony, marriage, banishment, tomb",
+        "Romeo — impulsive love, transformation, fate",
+        "Juliet — maturity, defiance of patriarchy, agency",
+        "Friar Lawrence — well-meaning failure, role in tragedy",
+        "The Nurse — comedy, loyalty, betrayal of Juliet",
+        "Mercutio — wit, masculinity, catalyst for tragedy",
+        "Lord and Lady Capulet — parental authority, patriarchal control",
+        "Tybalt — hot-headed honour culture, foil to Romeo",
+        "Theme: Love — romantic, courtly, familial",
+        "Theme: Fate vs free will — star-crossed lovers",
+        "Theme: Conflict — family, personal, social",
+        "Theme: Youth vs age and impulsiveness",
+        "Theme: Gender and patriarchy",
+        "Theme: Death and the language of love/death",
+        "Dramatic irony — audience knowledge vs character ignorance",
+        "Key quotes — 12 essential quotations memorised",
+        "Context: Elizabethan England — marriage, honour, religion",
+        "Context: Source text — Brooke's Romeus and Juliet (1562)",
+        "Form: Shakespearean tragedy — hamartia, catharsis",
+        "Structure: Prologue as framing device; Act 3 as turning point",
+      ]},
+      { id: "lit2", topic: "An Inspector Calls (Priestley)", points: [
+        "Plot — Inspector Goole's arrival, each family member's link to Eva Smith",
+        "Arthur Birling — capitalism, complacency, wrong predictions",
+        "Sybil Birling — class prejudice, denial, moral hypocrisy",
+        "Sheila Birling — guilt, growth, socialist conscience",
+        "Eric Birling — weakness, shame, hidden depths",
+        "Gerald Croft — class and establishment, partial redemption",
+        "Inspector Goole — socialist mouthpiece, mysterious identity, moral authority",
+        "Eva Smith/Daisy Renton — symbol of working class, never seen",
+        "Theme: Social responsibility — We are members of one body",
+        "Theme: Class and inequality — Edwardian vs 1945 audience",
+        "Theme: Gender — women as victims of male power",
+        "Theme: Generational divide — older vs younger Birlings",
+        "Theme: Guilt and responsibility — collective vs individual",
+        "Theme: Time — 1912 setting, written 1945, staged 1946",
+        "Dramatic devices — cliff-hangers, exits/entrances, the telephone",
+        "Inspector as omniscient figure — who/what is he?",
+        "Key quotes — 12 essential quotations memorised",
+        "Context: Post-WW2 Britain — welfare state, Labour landslide 1945",
+        "Context: Priestley's socialism — Time Plays influence",
+        "Context: 1912 Edwardian era — Titanic, pre-WW1 complacency",
+        "Form: Well-made play — unity of time, place, action",
+        "Structure: Cyclic ending — the phone rings again",
+      ]},
+      { id: "lit3", topic: "Jekyll and Hyde (Stevenson)", points: [
+        "Plot — Utterson's investigation, Hyde's crimes, Lanyon's shock, Jekyll's confession",
+        "Dr Jekyll — respectability, repression, duality, self-destruction",
+        "Mr Hyde — the id unleashed, violence, degeneration, freedom",
+        "Utterson — rationalism, loyalty, Victorian gentleman narrator",
+        "Dr Lanyon — rival, empirical science, dies of shock at seeing Hyde",
+        "Theme: Duality of human nature — man is not truly one but truly two",
+        "Theme: Repression and the Victorian self — respectability as prison",
+        "Theme: Science vs religion — godlike experimentation",
+        "Theme: Reputation and secrecy — gentlemen's code",
+        "Theme: Evolution and degeneration — Hyde as primitive",
+        "Theme: The city — London as labyrinth, fog, danger",
+        "Narrative structure — multiple narrators, epistolary ending",
+        "Gothic genre conventions — mystery, horror, the uncanny",
+        "Key quotes — 10 essential quotations memorised",
+        "Context: Victorian values — double life, hypocrisy, class",
+        "Context: Darwin's evolution (1859) — fear of degeneration",
+        "Context: Jack the Ripper (1888) — contemporary fears",
+        "Context: Stevenson's own life — Edinburgh duality",
+      ]},
+      { id: "lit4", topic: "Conflict Poetry (Edexcel Cluster)", points: [
+        "A Poison Tree (Blake) — repressed anger, revenge",
+        "The Destruction of Sennacherib (Byron) — divine power, war's futility",
+        "Extract from The Prelude (Wordsworth) — nature's sublime, guilt",
+        "The Man He Killed (Hardy) — irony of war, ordinary men as enemies",
+        "Cousin Kate (Rossetti) — gender, betrayal, class, shame",
+        "Half-caste (Agard) — identity, racism, language as power",
+        "Exposure (Owen) — WW1 futility, nature as enemy, waiting",
+        "The Charge of the Light Brigade (Tennyson) — heroism, duty, tragedy",
+        "Catrin (Clarke) — mother-daughter conflict, love and tension",
+        "War Photographer (Satyamurti) — moral burden, distance, suffering",
+        "Belfast Confetti (Carson) — conflict in everyday life, dislocation",
+        "The Class Game (Casey) — class prejudice, identity, defiance",
+        "Poppies (Weir) — maternal grief, home front, letting go",
+        "No Problem (Zephaniah) — racism, identity, resilience",
+        "What Were They Like? (Levertov) — Vietnam War, cultural destruction",
+        "Comparing poems: structure and form — free verse vs ballad vs sonnet",
+        "Comparing poems: voice — first person, dramatic monologue, third person",
+        "Comparing poems: key themes — internal, political, war, social conflict",
+        "Unseen poem technique — annotate, identify techniques, PEE",
+        "Writing comparison essays — methods, structure, connectives",
+      ]},
+    ],
+  },
+
+  // ── HISTORY (Edexcel) ─────────────────────────────────────
+  history: {
+    name: "History",
+    board: "Edexcel",
+    color: "#a78bfa",
+    icon: "🏛",
+    exams: [
+      { paper: "Paper 1 (Medicine)",   date: "2026-05-15", time: "AM" },
+      { paper: "Paper 2 (Cold War)",   date: "2026-06-04", time: "AM" },
+      { paper: "Paper 3 (Germany)",    date: "2026-06-11", time: "AM" },
+    ],
+    topics: [
+      { id: "hi1", topic: "Medicine Through Time", points: [
+        "Prehistoric medicine — natural and supernatural beliefs",
+        "Ancient Egypt — written records, surgery, supernatural",
+        "Ancient Greece — Hippocrates, four humours",
+        "Ancient Rome — Galen, anatomy, public health (sewers, aqueducts)",
+        "Medieval medicine — church, miasma, flagellants",
+        "Black Death — causes believed and actual, responses",
+        "Renaissance — Vesalius (anatomy), Harvey (circulation)",
+        "17th-18th century — challenges to old ideas, hospitals",
+        "Germ theory — Pasteur (1861), Koch (bacteria)",
+        "Vaccination — Jenner (smallpox, 1796)",
+        "Anaesthetics — Simpson (chloroform)",
+        "Antiseptics — Lister (carbolic acid)",
+        "Modern medicine — DNA, magic bullets, penicillin (Fleming)",
+        "NHS — 1948, Beveridge Report",
+        "Modern treatments — lifestyle, technology",
+        "WW1 — trench medicine, blood banks, shell shock",
+        "Source analysis skills — utility, reliability",
+      ]},
+      { id: "hi2", topic: "Cold War 1945-1991", points: [
+        "Origins — ideological differences USA vs USSR",
+        "Yalta and Potsdam conferences 1945",
+        "Iron Curtain Speech — Churchill, 1946",
+        "Truman Doctrine and Marshall Plan — 1947",
+        "Berlin Blockade and Airlift 1948-49",
+        "NATO and Warsaw Pact — formation",
+        "Korean War 1950-53",
+        "Hungarian Uprising 1956",
+        "Berlin Crisis and Wall 1961",
+        "Cuban Missile Crisis 1962 — causes, events, consequences",
+        "Detente — SALT, Helsinki Accords",
+        "Soviet invasion of Afghanistan 1979",
+        "Reagan and Second Cold War",
+        "Gorbachev — glasnost and perestroika",
+        "Fall of Berlin Wall 1989",
+        "Collapse of USSR 1991",
+      ]},
+      { id: "hi3", topic: "Elizabethan England", points: [
+        "Elizabeth I — character, problems of 1558",
+        "Religion — Middle Way, settlement of 1559",
+        "Marriage question — suitors, impact",
+        "Mary Queen of Scots — threat and execution",
+        "Catholic threats — plots (Ridolfi, Throckmorton, Babington)",
+        "Phillip II and Spain",
+        "Spanish Armada 1588 — causes, events, consequences",
+        "Poverty — causes, Elizabethan Poor Law",
+        "Exploration — Drake, Raleigh, Virginia colony",
+        "Entertainment — theatre, Shakespeare, Bear-baiting",
+        "Elizabethan home life — houses, food, dress",
+        "Source skills — usefulness and reliability",
+      ]},
+      { id: "hi4", topic: "Nazi Germany 1933-1939", points: [
+        "Rise of Hitler — Weimar weaknesses, Great Depression",
+        "Hitler becomes Chancellor 1933",
+        "Reichstag Fire and Enabling Act 1933",
+        "Night of the Long Knives 1934",
+        "Hitler becomes Fuehrer 1934",
+        "Totalitarian state — propaganda, censorship (Goebbels)",
+        "SS and Gestapo — terror and control",
+        "Opposition — resistance and conformity",
+        "Youth movements — Hitler Youth, BDM",
+        "Women — Kinder, Kueche, Kirche",
+        "The economy — unemployment, rearmament, Four Year Plan",
+        "Persecution of Jews — Nuremberg Laws 1935",
+        "Kristallnacht 1938",
+        "Life in Nazi Germany — church, education",
+      ]},
+    ],
+  },
+
+  // ── GERMAN (AQA) ──────────────────────────────────────────
+  german: {
+    name: "German",
+    board: "AQA",
+    color: "#f97316",
+    icon: "🇩🇪",
+    exams: [
+      { paper: "Listening and Reading", date: "2026-05-07", time: "PM" },
+      { paper: "Writing",               date: "2026-05-14", time: "PM" },
+    ],
+    topics: [
+      { id: "de1", topic: "Identity & Culture", points: [
+        "Family — Meine Familie, Beziehungen",
+        "Relationships and marriage — Ehe, Partnerschaft",
+        "Friends — Freundschaft",
+        "Social media and technology — Soziale Medien",
+        "Free time — Freizeit, Hobbys",
+        "Music, sport, TV — vocabulary",
+        "Customs and festivals — Deutsche Feste",
+        "Food and eating — deutsche Kueche",
+      ]},
+      { id: "de2", topic: "Local, National, Global", points: [
+        "Home and town — Meine Stadt",
+        "Environment — Umwelt, Klimawandel",
+        "Local issues — Probleme in der Gesellschaft",
+        "Travel and tourism — Reisen",
+        "Germany — geography and regions",
+        "Global issues — globale Probleme",
+        "Healthy living — gesundes Leben",
+        "Charitable work",
+      ]},
+      { id: "de3", topic: "Current & Future Study/Employment", points: [
+        "School and subjects — Schule und Faecher",
+        "School life — Schulleben",
+        "Future plans — Zukunftsplaene",
+        "Jobs and careers — Berufe",
+        "Work experience — Arbeitspraktikum",
+        "Applying for jobs",
+        "Ambitions",
+      ]},
+      { id: "de4", topic: "Grammar", points: [
+        "Nominative, accusative, dative, genitive cases",
+        "Articles — der/die/das/ein/eine",
+        "Adjective endings (all cases)",
+        "Pronouns — personal, reflexive, relative",
+        "Present tense — all verb types including sein/haben/werden",
+        "Past tense — Perfekt (haben/sein + past participle)",
+        "Imperfect — haben, sein, modal verbs",
+        "Future tense — werden + infinitive",
+        "Conditional — wuerden + infinitive",
+        "Modal verbs — koennen, muessen, duerfen, sollen, wollen, moegen",
+        "Word order — V2 rule, subordinate clauses (BWSDOW)",
+        "Negation — nicht and kein",
+        "Prepositions + cases — an, auf, in, mit, zu, nach, von",
+        "Separable and inseparable verbs",
+        "Comparative and superlative adjectives",
+      ]},
+    ],
+  },
+
+};
+
+// ── EXAM DATES (flat list for calendar) ───────────────────
+const ALL_EXAM_DATES = [];
+Object.entries(GCSE_SUBJECTS).forEach(([key, subj]) => {
+  subj.exams.forEach(exam => {
+    ALL_EXAM_DATES.push({
+      subject: subj.name,
+      subjectKey: key,
+      paper: exam.paper,
+      date: exam.date,
+      time: exam.time,
+      color: subj.color,
+      icon: subj.icon,
+    });
+  });
+});
+ALL_EXAM_DATES.sort((a, b) => a.date.localeCompare(b.date));
+
+// ── STUDY PHASES ──────────────────────────────────────────
+const STUDY_PHASES = [
+  {
+    name: "PHASE 1 — DEEP FOUNDATION",
+    range: ["2026-03-01", "2026-04-03"],
+    description: "Build all knowledge from scratch. One topic block per day. Read, make notes, retrieval.",
+    color: "#3b82f6",
+    dailyHours: 3,
+    focus: "New learning + first retrieval pass",
+    subjects: ["maths","physics","chemistry","biology","computerScience","englishLang","englishLit","german","history","furtherMaths"],
+    atomicHabit: "2-minute rule: open the textbook. The rest follows.",
+  },
+  {
+    name: "PHASE 2 — CONSOLIDATION",
+    range: ["2026-04-04", "2026-04-24"],
+    description: "Easter revision. Active recall — flashcards, practice questions, past papers by topic.",
+    color: "#f59e0b",
+    dailyHours: 5,
+    focus: "Active recall + spaced repetition",
+    subjects: ["maths","furtherMaths","physics","chemistry","biology","computerScience","history","german"],
+    atomicHabit: "Never miss twice. If you skip a session, do half the next day.",
+  },
+  {
+    name: "PHASE 3 — EXAM SIMULATION",
+    range: ["2026-04-25", "2026-05-10"],
+    description: "Full past papers under timed conditions. Mark with mark scheme immediately.",
+    color: "#ef4444",
+    dailyHours: 4,
+    focus: "Past papers + targeted weak areas",
+    subjects: ["biology","physics","chemistry","maths","englishLit","englishLang"],
+    atomicHabit: "Identity: you are someone who does hard things consistently.",
+  },
+  {
+    name: "PHASE 4 — EXAM PERIOD",
+    range: ["2026-05-11", "2026-06-15"],
+    description: "Exams running. Light revision on upcoming subject only. Sleep is revision.",
+    color: "#10b981",
+    dailyHours: 2,
+    focus: "Targeted review of next exam only",
+    subjects: [],
+    atomicHabit: "Deep Work: 2x90-min sessions then full rest. No half-measures.",
+  },
+];
+
+// ── DAILY RECOMMENDATION ENGINE ───────────────────────────
+// Returns { phase, schedule, upcoming, daysUntilNext, next }
+function getDailyRecommendation() {
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+
+  const phase = STUDY_PHASES.find(p => todayStr >= p.range[0] && todayStr <= p.range[1])
+    || STUDY_PHASES[STUDY_PHASES.length - 1];
+
+  const upcoming = ALL_EXAM_DATES
+    .filter(e => e.date >= todayStr)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const next = upcoming[0] || null;
+  const daysUntilNext = next
+    ? Math.ceil((new Date(next.date) - today) / 86400000)
+    : null;
+
+  const schedule = [];
+
+  if (daysUntilNext !== null && daysUntilNext <= 3) {
+    schedule.push({
+      time: "Morning (90 min)",
+      task: "FINAL REVIEW: " + next.subject + " — " + next.paper,
+      type: "exam-prep",
+      tip: "Practice questions only. No new content. Sleep early.",
+    });
+  } else {
+    const dow = today.getDay();
+    const rotation = [
+      ["maths",          "history"],
+      ["chemistry",      "biology"],
+      ["computerScience","german"],
+      ["englishLang",    "englishLit"],
+      ["physics",        "furtherMaths"],
+      ["maths",          "history"],
+      ["biology",        "chemistry"],
+    ];
+    const todaySubjects = rotation[dow] || rotation[0];
+    todaySubjects.forEach((sk, i) => {
+      const subj = GCSE_SUBJECTS[sk];
+      if (!subj) return;
+      schedule.push({
+        time: i === 0 ? "Morning (90 min deep work)" : "Afternoon (90 min deep work)",
+        task: subj.icon + " " + subj.name,
+        type: sk,
+        tip: phase.focus,
+        subject: subj,
+      });
+    });
+  }
+
+  return { phase, schedule, upcoming: upcoming.slice(0, 5), daysUntilNext, next };
+}
