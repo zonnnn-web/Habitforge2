@@ -914,6 +914,7 @@ function initQuickLinks() {
 
 // ─── INIT ─────────────────────────────────────────────────
 function init() {
+  load();
   checkDailyReset();
 
   // Random quote
