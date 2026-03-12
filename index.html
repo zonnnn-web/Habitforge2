@@ -58,6 +58,15 @@
       </button></li>
     </ul>
 
+    <!-- Quick Links -->
+    <div class="ql-box">
+      <div class="ql-hd">
+        <span class="ql-title">QUICK LINKS</span>
+        <button class="ql-edit-btn" id="ql-edit-btn" title="Edit links">✏</button>
+      </div>
+      <div class="ql-grid" id="ql-grid"></div>
+    </div>
+
     <div class="sidebar-xp">
       <div class="xp-row">
         <span class="xp-label">XP</span>
@@ -425,6 +434,21 @@
     </div><!-- /views -->
   </main>
 
+  <!-- Quick Links modal -->
+  <div class="modal-ov" id="ql-modal">
+    <div class="modal">
+      <div class="modal-hd">
+        <h2 class="modal-title">QUICK LINKS</h2>
+        <button class="modal-cls" id="ql-modal-cls">✕</button>
+      </div>
+      <div class="modal-bd" id="ql-modal-body"></div>
+      <div class="modal-ft">
+        <button class="btn-ghost" id="ql-modal-cancel">Cancel</button>
+        <button class="btn-primary" id="ql-modal-save">SAVE LINKS</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div id="toast" class="toast"></div>
 
@@ -466,6 +490,7 @@
         renderDashboard();
         renderHabits();
         renderTodos();
+        renderQuickLinks();
         updateXPDisplay();
         updateStreakDisplay();
         console.log('[HabitForge] ☁ Cloud data loaded');
