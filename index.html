@@ -61,6 +61,9 @@
       <li><button class="nav-btn" data-view="habits">
         <span class="nav-icon">◑</span><span>Daily Habits</span>
       </button></li>
+      <li><button class="nav-btn" data-view="timetable">
+        <span class="nav-icon">◧</span><span>Tomorrow's Plan</span>
+      </button></li>
     </ul>
 
     <!-- Quick Links -->
@@ -198,6 +201,12 @@
           <div class="card span-12" id="card-subject-progress">
             <div class="card-lbl">SUBJECT MASTERY OVERVIEW</div>
             <div class="subj-bars" id="subj-bars"></div>
+          </div>
+
+          <!-- Tomorrow's Plan preview -->
+          <div class="card span-12">
+            <div class="card-lbl">TOMORROW'S PLAN <span class="card-lbl-sub">— time-blocked schedule</span></div>
+            <div id="dash-tomorrow-preview"></div>
           </div>
         </div>
       </section>
@@ -459,6 +468,95 @@
         </div>
       </section>
 
+      <!-- ═══ TIMETABLE ═══ -->
+      <section class="view" id="view-timetable">
+        <div class="vh">
+          <h1 class="vh-title">TOMORROW'S PLAN</h1>
+          <p class="vh-sub">Time-block your day. What gets scheduled, gets done. — Cal Newport</p>
+        </div>
+
+        <!-- Book principles banner -->
+        <div class="tmbl-book-banner">
+          <div class="tmbl-book-pill">📗 Atomic Habits</div>
+          <div class="tmbl-book-pill">📘 Deep Work</div>
+          <div class="tmbl-book-pill">📙 The One Thing</div>
+          <div class="tmbl-book-pill">📔 Eat That Frog</div>
+          <div class="tmbl-book-pill">📒 Make It Stick</div>
+          <div class="tmbl-book-pill">📕 Ultralearning</div>
+        </div>
+
+        <div class="timetable-layout">
+          <div class="timetable-main">
+
+            <!-- Add form -->
+            <div class="card">
+              <div class="card-lbl">ADD TIME BLOCK</div>
+              <div class="tmbl-add-form">
+                <div class="tmbl-time-pair">
+                  <input type="time" class="field-in tmbl-time-in" id="tmbl-start" title="Start time"/>
+                  <span class="tmbl-sep">→</span>
+                  <input type="time" class="field-in tmbl-time-in" id="tmbl-end" title="End time (optional)"/>
+                </div>
+                <select class="field-sel" id="tmbl-subject">
+                  <option value="">📋 Subject / General</option>
+                  <option value="maths">📐 Maths</option>
+                  <option value="furtherMaths">∑ Further Maths</option>
+                  <option value="physics">⚛ Physics</option>
+                  <option value="chemistry">🧪 Chemistry</option>
+                  <option value="biology">🧬 Biology</option>
+                  <option value="computerScience">💻 CS</option>
+                  <option value="englishLang">✍ Eng Lang</option>
+                  <option value="englishLit">📖 Eng Lit</option>
+                  <option value="german">🇩🇪 German</option>
+                  <option value="history">🏛 History</option>
+                </select>
+                <input class="field-in tmbl-task-in" id="tmbl-task" placeholder="Task or topic..."/>
+                <input class="field-in tmbl-notes-in" id="tmbl-notes" placeholder="Notes (optional)"/>
+                <button class="btn-primary" id="tmbl-add-btn">+ ADD BLOCK</button>
+              </div>
+              <div class="tmbl-tip">💡 Tip: add one task per block — single-tasking beats multitasking (The One Thing)</div>
+            </div>
+
+            <!-- Stats strip -->
+            <div class="tmbl-stats-strip">
+              <div class="tmbl-stat-item">
+                <span class="tmbl-stat-n" id="tmbl-blocks-count">0</span>
+                <span class="tmbl-stat-l">blocks</span>
+              </div>
+              <div class="tmbl-stat-item">
+                <span class="tmbl-stat-n" id="tmbl-total">—</span>
+                <span class="tmbl-stat-l">scheduled</span>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="card">
+              <div class="card-lbl" id="timetable-date-label">LOADING...</div>
+              <div id="timetable-timeline"></div>
+            </div>
+          </div>
+
+          <div class="timetable-side">
+            <div class="card">
+              <div class="card-lbl">TIME-BLOCKING WISDOM</div>
+              <div id="tmbl-wisdom-list"></div>
+            </div>
+            <div class="card">
+              <div class="card-lbl">HOW TO TIME-BLOCK</div>
+              <ul class="protocol-list">
+                <li><span class="pi">01</span>Plan tomorrow the night before — 10 minutes max.</li>
+                <li><span class="pi">02</span>Identify your ONE most important task. Do it first.</li>
+                <li><span class="pi">03</span>Group similar tasks — batch emails, batch flashcards.</li>
+                <li><span class="pi">04</span>Block time for breaks — real rest, not half-rest.</li>
+                <li><span class="pi">05</span>Protect the first 2 hours for deep, cognitively hard work.</li>
+                <li><span class="pi">06</span>Every evening: review what you did vs. what you planned.</li>
+                <li><span class="pi">07</span>Interleave subjects (Make It Stick) — don't block 4h on one topic.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div><!-- /views -->
   </main>
 
@@ -519,6 +617,7 @@
         renderHabits();
         renderTodos();
         renderQuickLinks();
+        renderTimetable();
         updateXPDisplay();
         updateStreakDisplay();
         console.log('[HabitForge] ☁ Cloud data loaded');
