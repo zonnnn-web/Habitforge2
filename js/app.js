@@ -18,6 +18,7 @@ const S = {
   deepWorkMins: 0,
   pomoSettings: { work: 25, short: 5, long: 15 },
   timetable: {},       // { 'YYYY-MM-DD': [ { id, startTime, endTime, subject, task, notes } ] }
+  flashcardDecks: [],  // [ { id, name, subject, examDate, dailyTarget, cards:[] } ]
   quickLinks: [
     { emoji: '🔗', label: '', url: '' },
     { emoji: '🔗', label: '', url: '' },
@@ -142,12 +143,13 @@ function initNav() {
 function switchView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   $(`view-${name}`).classList.add('active');
-  if (name === 'dashboard')  renderDashboard();
-  if (name === 'specs')      renderSpecsView();
-  if (name === 'calendar')   renderCalendar();
-  if (name === 'todos')      renderTodos();
-  if (name === 'habits')     renderHabits();
-  if (name === 'timetable')  renderTimetable();
+  if (name === 'dashboard')   renderDashboard();
+  if (name === 'specs')       renderSpecsView();
+  if (name === 'calendar')    renderCalendar();
+  if (name === 'todos')       renderTodos();
+  if (name === 'habits')      renderHabits();
+  if (name === 'timetable')   renderTimetable();
+  if (name === 'flashcards')  renderFlashcards();
 }
 
 // ─── TOPBAR / COUNTDOWN ───────────────────────────────────
@@ -187,6 +189,7 @@ function renderDashboard() {
   renderDashStats();
   renderExamAlert();
   renderDashTomorrowPreview();
+  renderDashFlashcards();
 }
 
 function renderExamAlert() {
@@ -1247,6 +1250,7 @@ function init() {
   initTodos();
   initHabits();
   initQuickLinks();
+  initFlashcards();
   initTimetable();
 
   updateXPDisplay();
